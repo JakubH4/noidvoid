@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOIDVOID - Features</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(31, 31, 31, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a:hover {
+            color: #6200ea;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #6200ea;
+        }
+
+        .feature-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .feature-box {
+            background: rgba(31, 31, 31, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NOIDVOID</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
+        </div>
+    </nav>
+
+    <section id="features" class="section">
+        <h2>Features</h2>
+        <div class="feature-container">
+            <div class="feature-box">
+                <h3>Instant 21g Reduction</h3>
+                <p>Lighten up—permanently, with zero effort.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Seamless Transition</h3>
+                <p>No queues, no delays. Just a swift, effortless exit.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
