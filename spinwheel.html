@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning Wheel</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        canvas { border: 2px solid black; margin-top: 20px; }
+        button { margin-top: 20px; padding: 10px 20px; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Spin the Wheel!</h1>
+    <canvas id="wheelCanvas" width="400" height="400"></canvas>
+    <br>
+    <button onclick="spinWheel()">Spin</button>
+    
+    <script>
+        const canvas = document.getElementById("wheelCanvas");
+        const ctx = canvas.getContext("2d");
+        const wheelSections = ["Red", "Blue", "Green", "Yellow", "Purple", "Orange"];
+        const colors = ["#FF0000", "#0000FF", "#008000", "#FFFF00", "#800080", "#FFA500"];
+        let angle = 0;
+        let spinning = false;
+        let speed = 0;
+
+        function drawWheel() {
+            const numSections = wheelSections.length;
+            const arc = (2 * Math.PI) / numSections;
+            
+            for (let i = 0; i < numSections; i++) {
+                ctx.beginPath();
+                ctx.moveTo(200, 200);
+                ctx.arc(200, 200, 180, arc * i, arc * (i + 1));
+                ctx.closePath();
+                ctx.fillStyle = colors[i];
+                ctx.fill();
+                ctx.stroke();
+                
+                ctx.save();
+                ctx.translate(200, 200);
+                ctx.rotate(arc * i + arc / 2);
+                ctx.fillStyle = "white";
+                ctx.font = "20px Arial";
+                ctx.fillText(wheelSections[i], 50, 10);
+                ctx.restore();
+            }
+        }
+
+        function spinWheel() {
+            if (spinning) return;
+            spinning = true;
+            speed = Math.random() * 0.2 + 0.1; 
+            animateSpin();
+        }
+
+        function animateSpin() {
+            if (speed > 0.002) {
+                angle += speed;
+                speed *= 0.99; 
+                ctx.clearRect(0, 0, 400, 400);
+                ctx.save();
+                ctx.translate(200, 200);
+                ctx.rotate(angle);
+                ctx.translate(-200, -200);
+                drawWheel();
+                ctx.restore();
+                requestAnimationFrame(animateSpin);
+            } else {
+                spinning = false;
+            }
+        }
+
+        drawWheel();
+    </script>
+</body>
+</html>
